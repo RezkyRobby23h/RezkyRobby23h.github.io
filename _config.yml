@@ -1,47 +1,177 @@
-# =============================================================================
-# Konfigurasi Utama
-# =============================================================================
+# The Site Configuration
+
+# Import the theme
+theme: jekyll-theme-chirpy
+
+# Bahasa situs Anda
 lang: id
+
+# Zona waktu Anda
 timezone: Asia/Makassar
 
-# =============================================================================
-# Informasi Situs & Author (Sidebar Kiri)
-# =============================================================================
+# jekyll-seo-tag settings › https://github.com/jekyll/jekyll-seo-tag/blob/master/docs/usage.md
+# ↓ --------------------------
+
+# Judul utama situs Anda
 title: Rezky Robbyyanto Akbari
+
+# Tagline Anda
 tagline: Menjembatani Teknologi dan Strategi Bisnis Melalui Sistem Informasi.
-description: Robby Work
 
-# URL: Sudah benar sesuai nama repositori baru Anda
-url: https://RezkyRobby23h.github.io
-# 'baseurl' tidak diperlukan lagi karena nama repo sudah benar
+# Deskripsi SEO
+description: >-
+  Robby Work
 
-author: Rezky Robbyyanto Akbari
-avatar: /assets/img/avatar.jpg
-email: reskybobby04@gmail.com
+# URL situs Anda (sudah benar)
+url: "https://RezkyRobby23h.github.io"
 
-social:
-  name: Rezky Robbyyanto Akbari
-  email: reskybobby04@gmail.com
-  links:
-    - name: GitHub
-      url: https://github.com/RezkyRobby23h
-
-# =============================================================================
-# Pengaturan Tampilan & Teknis
-# =============================================================================
-theme_mode: dual
+# Username GitHub Anda (sudah benar)
 github:
   username: RezkyRobby23h
 
-# =============================================================================
-# Pengaturan Build Jekyll (Jangan ubah bagian di bawah ini)
-# =============================================================================
+# Ganti jika Anda punya Twitter
+twitter:
+  username: twitter_username
+
+# Informasi Author & Sosial Media
+social:
+  # Nama lengkap Anda
+  name: Rezky Robbyyanto Akbari
+  # Email Anda
+  email: reskybobby04@gmail.com
+  links:
+    # Tautan ini akan digunakan sebagai tautan hak cipta di footer
+    - https://github.com/RezkyRobby23h # Tautan utama (GitHub)
+    - https://github.com/RezkyRobby23h # Tautan ikon GitHub
+    # Hapus tanda # di bawah ini untuk menambahkan lebih banyak tautan
+    # - https://www.linkedin.com/in/username-anda
+
+# Site Verification Settings (Biarkan kosong jika tidak digunakan)
+webmaster_verifications:
+  google:
+  bing:
+  alexa:
+  yandex:
+  baidu:
+  facebook:
+
+# ↑ --------------------------
+# The end of `jekyll-seo-tag` settings
+
+# Web Analytics Settings (Biarkan kosong jika tidak digunakan)
+analytics:
+  google:
+    id:
+  goatcounter:
+    id:
+  umami:
+    id:
+    domain:
+  matomo:
+    id:
+    domain:
+  cloudflare:
+    id:
+  fathom:
+    id:
+
+# Page views settings
+pageviews:
+  provider:
+
+# Prefer color scheme setting.
+# Dibiarkan kosong agar menjadi "dual" (ada tombol ganti mode)
+theme_mode:
+
+# The CDN endpoint for media resources.
+cdn:
+
+# Avatar (Foto Profil) di sidebar
+# PENTING: File ini HARUS ada di /assets/img/avatar.jpg
+avatar: /assets/img/avatar.jpg
+
+# The URL of the site-wide social preview image used in SEO `og:image` meta tag.
+social_preview_image:
+
+# boolean type, the global switch for TOC in posts.
+toc: true
+
+# Pengaturan Komentar (Biarkan kosong untuk menonaktifkan)
+comments:
+  provider:
+  disqus:
+    shortname:
+  utterances:
+    repo:
+  giscus:
+    repo:
+    repo_id:
+    category:
+    category_id:
+    mapping:
+    strict:
+    input_position:
+    lang:
+    reactions_enabled:
+
+# Self-hosted static assets, optional
+assets:
+  self_host:
+    enabled:
+    env:
+
+pwa:
+  enabled: true # The option for PWA feature (installable)
+  cache:
+    enabled: true # The option for PWA offline cache
+    deny_paths:
+
+paginate: 10
+
+# Biarkan "" karena nama repo Anda = username.github.io
+baseurl: ""
+
+# ------------ The following options are not recommended to be modified ------------------
+
 kramdown:
-  input: GFM
-  hard_wrap: false
+  footnote_backlink: "&#8617;&#xfe0e;"
   syntax_highlighter: rouge
+  syntax_highlighter_opts:
+    css_class: highlight
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
+collections:
+  tabs:
+    output: true
+    sort_by: order
+
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: post
+      comments: true
+      toc: true
+      permalink: /posts/:title/
+  - scope:
+      path: _drafts
+    values:
+      comments: false
+  - scope:
+      path: ""
+      type: tabs
+    values:
+      layout: page
+      permalink: /:title/
+
 sass:
   style: compressed
+
 compress_html:
   clippings: all
   comments: all
@@ -50,16 +180,23 @@ compress_html:
   blanklines: false
   ignore:
     envs: [development]
-paginate: 10
-paginate_path: /page:num/
+
 exclude:
-  - .github/
-  - .jekyll-cache/
-  - .bundle/
-  - vendor/
-  - Gemfile
-  - Gemfile.lock
+  - "*.gem"
+  - "*.gemspec"
+  - docs
+  - tools
   - README.md
   - LICENSE
-  - CNAME
-  - docs/
+  - purgecss.js
+  - "*.config.js"
+  - "package*.json"
+
+jekyll-archives:
+  enabled: [categories, tags]
+  layouts:
+    category: category
+    tag: tag
+  permalinks:
+    tag: /tags/:name/
+    category: /categories/:name/
